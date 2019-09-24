@@ -1,0 +1,23 @@
+{
+  "name": "putyourlink",
+  "version": "1.0.0",
+  "description": "Put your affiliate link.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajranjan0608/putyourlink.git"
+  },
+  "author": "Raj Ranjan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajranjan0608/putyourlink/issues"
+  },
+  "homepage": "https://github.com/rajranjan0608/putyourlink#readme",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1"
+  }
+}
