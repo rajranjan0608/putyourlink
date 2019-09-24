@@ -1,16 +1,45 @@
 var express         = require('express');
-const ejs           = require("ejs");
+var ejs             = require("ejs");
+var bodyParser      = require('body-parser');
+var mongoose        = require('mongoose');
+var link            = require('./models/linkInput');
 
 var app = express();
 
 var PORT = 3000;
 
+app.use(express.static("public"));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+mongoURI="mongodb://localhost/putyourlink";
+// mongoURI=process.env.MONGOURI;
+
+mongoose.connect(mongoURI,{useNewUrlParser: true});
+
 app.get('/', function(req,res){
+
     res.redirect('/index');
 });
 
 app.get('/index', function(req,res){
-    res.render('index.ejs');
+    
+    link.find({}, function(err, linkinputs){
+        if(req.query.pass=='iamrajranjan'){
+            res.render('index.ejs', {linkinputs:linkinputs, isAdmin:true});
+        }else{
+            res.render('index.ejs', {linkinputs:linkinputs, isAdmin:false});
+        }
+    });
+});
+
+app.post('/linkInput', function(req,res){
+
+    link.create(req.body.linkInput);
+
+    res.redirect('/');
+
 });
 
 var server=app.listen(process.env.PORT || PORT, () => {
