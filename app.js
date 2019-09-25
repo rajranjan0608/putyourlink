@@ -4,6 +4,8 @@ var bodyParser      = require('body-parser');
 var mongoose        = require('mongoose');
 var link            = require('./models/linkInput');
 
+require('dotenv').config();
+
 var app = express();
 
 var PORT = 3000;
