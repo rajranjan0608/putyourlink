@@ -36,6 +36,18 @@ app.get('/index', function(req,res){
     });
 });
 
+app.get('/signup', function(req,res){
+    
+    res.render('signup.ejs');
+    
+});
+
+app.post('/signup', function(req,res){
+   
+    
+    
+});
+
 app.post('/linkInput', function(req,res){
 
     link.create(req.body.linkInput);
